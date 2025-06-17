@@ -153,26 +153,29 @@ const FICalculator: React.FC<FICalculatorProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-barrett-accent via-white to-barrett-tertiary/20">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white/90 backdrop-blur-sm shadow-sm border-b border-barrett-accent">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <Button
               variant="ghost"
               onClick={onBack}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-barrett-primary hover:bg-barrett-accent font-source"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to Home</span>
             </Button>
-            <h1 className="text-2xl font-bold text-gray-800">FI Calculator</h1>
+            <div className="text-center">
+              <h1 className="text-2xl font-bold text-barrett-primary font-source">FI Calculator</h1>
+              <div className="text-barrett-primary/60 font-source text-sm">BARRETTPLANNING.com</div>
+            </div>
             <div className="w-24"></div>
           </div>
           
           {/* Progress Bar */}
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-barrett-primary/70 font-source">
               <span>Step {currentStep} of {steps.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -182,29 +185,29 @@ const FICalculator: React.FC<FICalculatorProps> = ({ onBack }) => {
       </div>
 
       {/* Step Indicator */}
-      <div className="bg-white border-b">
+      <div className="bg-white/90 backdrop-blur-sm border-b border-barrett-accent">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-center">
             <div className="flex items-center space-x-4 overflow-x-auto">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex items-center">
                   <div className={`flex flex-col items-center min-w-0 ${
-                    step.id === currentStep ? 'text-blue-600' : 
-                    step.id < currentStep ? 'text-green-600' : 'text-gray-400'
+                    step.id === currentStep ? 'text-barrett-primary' : 
+                    step.id < currentStep ? 'text-barrett-secondary' : 'text-barrett-primary/40'
                   }`}>
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
-                      step.id === currentStep ? 'bg-blue-600 text-white' :
-                      step.id < currentStep ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold font-source ${
+                      step.id === currentStep ? 'bg-barrett-primary text-white' :
+                      step.id < currentStep ? 'bg-barrett-secondary text-white' : 'bg-barrett-accent text-barrett-primary/60'
                     }`}>
                       {step.id}
                     </div>
                     <div className="text-center mt-2">
-                      <div className="font-medium text-xs">{step.title}</div>
-                      <div className="text-xs text-gray-500 hidden sm:block">{step.description}</div>
+                      <div className="font-medium text-xs font-source">{step.title}</div>
+                      <div className="text-xs text-barrett-primary/50 hidden sm:block font-source">{step.description}</div>
                     </div>
                   </div>
                   {index < steps.length - 1 && (
-                    <ArrowRight className="h-4 w-4 text-gray-300 mx-2 hidden sm:block" />
+                    <ArrowRight className="h-4 w-4 text-barrett-primary/30 mx-2 hidden sm:block" />
                   )}
                 </div>
               ))}
@@ -216,7 +219,7 @@ const FICalculator: React.FC<FICalculatorProps> = ({ onBack }) => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-8 border border-barrett-accent">
             {renderStep()}
           </div>
           
@@ -227,7 +230,7 @@ const FICalculator: React.FC<FICalculatorProps> = ({ onBack }) => {
                 variant="outline"
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 border-barrett-primary/20 text-barrett-primary hover:bg-barrett-accent font-source"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Previous</span>
@@ -235,7 +238,7 @@ const FICalculator: React.FC<FICalculatorProps> = ({ onBack }) => {
               
               <Button
                 onClick={nextStep}
-                className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700"
+                className="flex items-center space-x-2 bg-gradient-to-r from-barrett-primary to-barrett-secondary hover:from-barrett-primary/90 hover:to-barrett-secondary/90 font-source font-semibold"
               >
                 <span>Next Step</span>
                 <ArrowRight className="h-4 w-4" />
