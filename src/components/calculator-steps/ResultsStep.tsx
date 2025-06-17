@@ -75,7 +75,7 @@ const ResultsStep: React.FC<ResultsStepProps> = ({ data }) => {
     const netSpending = Math.max(0, averageSpending - annualIncome);
     
     // Portfolio multiplier based on withdrawal rate
-    const portfolioMultiplier = 100 / data.withdrawalRate;
+    const portfolioMultiplier = 100 / data.risk.withdrawalRate;
     
     // Base FI number
     const baseFINumber = netSpending * portfolioMultiplier;
